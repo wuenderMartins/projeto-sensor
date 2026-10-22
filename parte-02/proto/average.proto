@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package average;
+
+// Microsservico para calculo (camada Edge). O Gateway envia as leituras
+// que coletou dos seus talhoes e recebe de volta a media.
+service AverageService {
+  rpc CalculateAverage(ReadingBatch) returns (AverageResult);
+}
+
+message Reading {
+  string talhao = 1;
+  string timestamp = 2;
+  double temperature = 3;
+  double humidity = 4;
+  double solar_radiation = 5;
+}
+
+message ReadingBatch {
+  string gateway = 1;
+  repeated Reading readings = 2;
+}
+
+message Averages {
+  double temperature = 1;
+  double humidity = 2;
+  double solar_radiation = 3;
+}
+
+message AverageResult {
+  string gateway = 1;
+  int32 samples = 2;
+  Averages averages = 3;
+  string calculated_at = 4;
+}

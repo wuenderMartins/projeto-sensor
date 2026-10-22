@@ -21,3 +21,31 @@ export interface ErrorResponse {
 
 export type TalhaoServerRequest = ReadSensorsRequest;
 export type TalhaoServerResponse = TalhaoReadingResponse | ErrorResponse;
+
+// Mensagens do contrato gRPC (proto/average.proto) entre Gateway e
+// microsservico de calculo. O proto-loader converte os campos em
+// snake_case do .proto para camelCase (solar_radiation -> solarRadiation).
+
+export interface Reading {
+  talhao: string;
+  timestamp: string;
+  temperature: number;
+  humidity: number;
+  solarRadiation: number;
+}
+
+export interface ReadingBatch {
+  gateway: string;
+  readings: Reading[];
+}
+
+export interface AverageResult {
+  gateway: string;
+  samples: number;
+  averages: {
+    temperature: number;
+    humidity: number;
+    solarRadiation: number;
+  };
+  calculatedAt: string;
+}

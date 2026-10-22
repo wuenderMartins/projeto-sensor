@@ -37,6 +37,12 @@ export const GATEWAYS: Record<string, GatewayConfig> = {
   },
 };
 
+// --- Microsservico para calculo (gRPC) ---
+export const AVERAGE_SERVICE_CONFIG = {
+  host: "127.0.0.1",
+  port: 50051,
+};
+
 // --- Parametros de rede e resiliencia ---
 export const CONNECT_TIMEOUT_MS = 3000;
 export const RESPONSE_TIMEOUT_MS = 3000;
