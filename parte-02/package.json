@@ -1,0 +1,23 @@
+{
+  "name": "smart-farm-parte-02",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Parte 02 do Smart Farm: talhoes via socket TCP e microsservico de calculo via gRPC",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "talhao": "tsx src/talhoes/talhao-server.ts",
+    "gateway:g1": "tsx src/gateways/gateway.ts G1",
+    "gateway:g2": "tsx src/gateways/gateway.ts G2",
+    "average-service": "tsx src/services/average-service.ts",
+    "demo": "node scripts/run-demo.js"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.6",
+    "@grpc/proto-loader": "^0.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  }
+}
